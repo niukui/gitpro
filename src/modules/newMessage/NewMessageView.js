@@ -3,6 +3,18 @@ import {Text, View,Button,TextInput,} from 'react-native';
 import styles from './../../styles/NewMessage';
 
 class NewMessageView extends Component {
+    static PropTypes = {
+
+    }
+    constructor(props){
+        super(props);
+        this.NewMessage = this
+            .NewMessage
+            .bind(this);
+    }
+    NewMessage(){
+        console.log('pressed');
+    }
     renderHeader(){
         return(
             <View style={styles.messageHeader}>
@@ -31,7 +43,9 @@ class NewMessageView extends Component {
             <View style={styles.container}>
                 {this.renderHeader()}
                 {this.renderBody()}
-                <Button title='Send Message'/>
+                <Button title='Send Message'
+                        onPress={this.NewMessage}
+                />
                 <View style={{flex:5}}></View>
             </View>
         );

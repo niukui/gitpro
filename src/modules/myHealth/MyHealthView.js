@@ -3,6 +3,18 @@ import {StyleSheet, TouchableOpacity, Image, Text, View,Button,TextInput} from '
 import styles from './../../styles/myHealth';
 
 class MyHealthView extends Component {
+    static PropTypes = {
+
+    }
+    constructor(props,context){
+        super(props,context);
+        this.saveEvevt = this
+            .saveEvevt
+            .bind(this);
+    }
+    saveEvevt(){
+        console.log('you pressed me');
+    }
     render() {
         //const displayName = 'My Health View';
         return (
@@ -12,6 +24,7 @@ class MyHealthView extends Component {
                         <Button
                             title="back"
                             accessibilityLabel="back"
+                            onPress={this.saveEvevt}
                         />
                     </TouchableOpacity>
                 </View>
@@ -32,7 +45,7 @@ class MyHealthView extends Component {
                     </Text>
                 </View>
                 <TouchableOpacity>
-                    <Button title='save' accessibilityLabel='save'/>
+                    <Button title='save' accessibilityLabel='save' onPress= {this.saveEvevt}/>
                 </TouchableOpacity>
             </View>
         );

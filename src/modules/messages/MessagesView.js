@@ -56,14 +56,14 @@ class MessagesView extends Component {
         const ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
+        this.ds = ds;
         this.deleteRow = this
             .deleteRow
             .bind(this);
         this.state = {
             dataSource: ds.cloneWithRows([]),
-            selectedIds: []
-        };
-        this.ds = ds;
+            selectedIds: [],
+        };  
     }
     deleteRow(secId, rowId, rowMap) {
         rowMap[`${secId}${rowId}`].closeRow();
@@ -130,7 +130,7 @@ class MessagesView extends Component {
                     </Text>
                     <TouchableOpacity
                         style={[styles.backRightBtn,styles.backRightBtnRight]}
-                        onP
+                        onPress={_ => this.deleteRow(secId,rowId,rowMap)}
                     >
                         <Text style={styles.backTextWhite}>Delete</Text>
                     </TouchableOpacity>

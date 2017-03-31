@@ -32,4 +32,11 @@ export default StyleSheet.create({
       flex:8,
         //backgroundColor:"#ddd",
     },
+   listItemView:{
+    borderWidth:2,
+    padding:10,
+    justifyContent:'center',
+    alignItems:'center',
+    
+   },
 });

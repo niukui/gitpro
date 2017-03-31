@@ -1,9 +1,21 @@
-import {Map} from 'immutable';
-import {loop, Effects} from 'redux-loop';
-import {findMessages, delMessages} from '../../services/messageService';
+import {
+    Map
+} from 'immutable';
+import {
+    loop,
+    Effects
+} from 'redux-loop';
+import {
+    findMessages,
+    delMessages
+} from '../../services/messageService';
 
 // Initial state
-const initialState = Map({loading: false, messages: [], error: ''});
+const initialState = Map({
+    loading: false,
+    messages: [],
+    error: ''
+});
 
 // Actions
 const REQUEST_MESSAGES = 'MessagesState/REQUEST_MESSAGES';
@@ -15,11 +27,17 @@ const DELETE_MESSAGES_SUCCESS = 'MessagesState/DELETE_MESSAGES_SUCCESS';
 // Action creators
 
 export function loadMessages(to) {
-    return {type: REQUEST_MESSAGES, to};
+    return {
+        type: REQUEST_MESSAGES,
+        to
+    };
 }
 
 export function deleteMessages(ids) {
-    return {type: REQUEST_DELETE_MESSAGES, ids};
+    return {
+        type: REQUEST_DELETE_MESSAGES,
+        ids
+    };
 }
 
 export async function requestMessages(to) {
@@ -30,20 +48,31 @@ export async function requestMessages(to) {
         } else {
             messages = JSON.parse(JSON.stringify(messages));
         }
-        return {type: LOAD_MESSAGES_SUCCESS, payload: messages};
+        return {
+            type: LOAD_MESSAGES_SUCCESS,
+            payload: messages
+        };
     } catch (error) {
         console.log(error.message);
-        return {type: REQUEST_FAILURE, payload: error.message};
+        return {
+            type: REQUEST_FAILURE,
+            payload: error.message
+        };
     }
 }
 
 export async function requestDeleteMessages(ids) {
     try {
         const result = await delMessages(ids);
-        return {type: DELETE_MESSAGES_SUCCESS};
+        return {
+            type: DELETE_MESSAGES_SUCCESS
+        };
     } catch (error) {
         console.log(error.message);
-        return {type: REQUEST_FAILURE, payload: error.message};
+        return {
+            type: REQUEST_FAILURE,
+            payload: error.message
+        };
     }
 }
 

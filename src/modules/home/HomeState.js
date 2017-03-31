@@ -1,9 +1,19 @@
-import {Map} from 'immutable';
-import {loop, Effects} from 'redux-loop';
-import {getProfile} from '../../services/profileService';
+import {
+    Map
+} from 'immutable';
+import {
+    loop,
+    Effects
+} from 'redux-loop';
+import {
+    getProfile
+} from '../../services/profileService';
 
 // Initial state
-const initialState = Map({loading: false, infos: {}});
+const initialState = Map({
+    loading: false,
+    infos: {}
+});
 // Actions
 const REQUEST_HOME_INFO = 'HomeState/REQUEST_HOME_INFO';
 const SET_INFO = 'HomeState/SET_INFO';
@@ -11,7 +21,10 @@ const REQUEST_FAILURE = 'HomeState/REQUEST_FAILURE';
 
 // Action creators
 export function initHomeInfo(username) {
-    return {type: REQUEST_HOME_INFO, username};
+    return {
+        type: REQUEST_HOME_INFO,
+        username
+    };
 }
 
 export async function requestHomeInfos(username) {
@@ -31,7 +44,10 @@ export async function requestHomeInfos(username) {
         };
     } catch (error) {
         console.log(error.message);
-        return {type: REQUEST_FAILURE, payload: error.message};
+        return {
+            type: REQUEST_FAILURE,
+            payload: error.message
+        };
     }
 }
 
